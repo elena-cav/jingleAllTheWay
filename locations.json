@@ -1,0 +1,58 @@
+{
+  "Egvekinot": {
+    "lat": 66.3237,
+    "lng": -179.1225
+  },
+  "Auckland": {
+    "lat": -36.8509,
+    "lng": 174.7645
+  },
+  "Jakarta": {
+    "lat": -6.2146,
+    "lng": 106.8451
+  },
+  "Astana": {
+    "lat": 51.1605,
+    "lng": 71.4704
+  },
+  "Pretoria": {
+    "lat": -25.7464,
+    "lng": 28.1881
+  },
+  "Paris": {
+    "lat": 48.8566,
+    "lng": 2.3522
+  },
+  "Reykjavik": {
+    "lat": 64.1466,
+    "lng": -21.9426
+  },
+  "Fermont": {
+    "lat": 52.7954,
+    "lng": -67.0843
+  },
+  "New York City": {
+    "lat": 40.7128,
+    "lng": -74.006
+  },
+  "Los Angeles": {
+    "lat": 34.0522,
+    "lng": -118.2437
+  },
+  "Mexico City": {
+    "lat": 19.4326,
+    "lng": -99.1332
+  },
+  "Bogota": {
+    "lat": 4.711,
+    "lng": -74.0721
+  },
+  "Belo Horizonte": {
+    "lat": -19.9191,
+    "lng": -43.9387
+  },
+  "London": {
+    "lat": 51.5072,
+    "lng": -0.1276
+  }
+}
