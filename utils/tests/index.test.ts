@@ -1,11 +1,19 @@
-import jingle from "..";
-describe("Name of the group", () => {
-  function makeDate(date: Date) {
-    return new Date(date.getTime()); //<--error here
-  }
+import { jingle, getLocationTime } from "..";
 
+describe("Jingle", () => {
   test("name", () => {
     const newDate = new Date("Sun Dec 25 2022 02:20:00 GMT+0000"); //
     return expect(jingle(newDate)).toBe("Arriving in Reykjavík in 10 minutes");
+  });
+  test("namse", () => {
+    const newDate = new Date("Sun Dec 25 2022 02:20:00 GMT+0000"); //
+    return expect(jingle(newDate)).toBe("Arriving in Reykjavík in 10 minutes");
+  });
+});
+describe("Jingle", () => {
+  test("name", () => {
+    return expect(getLocationTime("Belo Horizonte")).toBe(
+      "Belo Horizonte at 06:45 GMT"
+    );
   });
 });
