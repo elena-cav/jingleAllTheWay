@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Map from "../components/map";
+import TimeInput from "../components/TimeInput";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>Hello </h1>
+        <TimeInput />
         <Map />
       </main>
     </div>
