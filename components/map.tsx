@@ -16,8 +16,8 @@ const center = {
 
 const Map = () => {
   type Next = {
-    lat: string;
-    lng: string;
+    lat: number;
+    lng: number;
     location: string;
   };
   const [next, setNext] = useState<Next | null>(null);
@@ -40,6 +40,18 @@ const Map = () => {
   const onUnmount = useCallback(function callback(map: any) {
     setMap(null);
   }, []);
+
+  const filterLocations = () => {
+    const nextLocation = next?.location || "";
+    const index = Object.keys(locations).indexOf(nextLocation);
+    return Object.fromEntries(
+      Object.entries(locations).filter((loc, i) => {
+        if (i === index || i === index - 1) {
+          return loc;
+        }
+      })
+    );
+  };
 
   const options = {
     strokeColor: "#FF0000",
@@ -94,7 +106,9 @@ const Map = () => {
         )}
         <Polyline
           onLoad={onLoad}
-          path={Object.values(locations)}
+          path={
+            !next ? Object.values(locations) : Object.values(filterLocations())
+          }
           options={options}
         />
       </GoogleMap>

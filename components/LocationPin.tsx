@@ -3,10 +3,16 @@ import { useState } from "react";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import { getLocationTime } from "../utils/index";
 
-const LocationPin = ({ lat, lng, location, locationAndTime }: any) => {
+interface LocationProps {
+  lat: number;
+  lng: number;
+  location: string;
+}
+
+const LocationPin = ({ lat, lng, location }: LocationProps) => {
   const [clicked, setClicked] = useState(false);
 
-  const onClick = (location: string) => {
+  const onClick = () => {
     setClicked((clicked) => !clicked);
   };
 
@@ -17,7 +23,7 @@ const LocationPin = ({ lat, lng, location, locationAndTime }: any) => {
           path: google.maps.SymbolPath.CIRCLE,
           scale: 7,
         }}
-        onClick={() => onClick(location)}
+        onClick={() => onClick()}
         position={{ lat, lng }}
       />
       {clicked && (
