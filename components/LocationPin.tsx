@@ -11,7 +11,7 @@ const LocationPin = ({ lat, lng, location, locationAndTime }: any) => {
   };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Marker
         icon={{
           path: google.maps.SymbolPath.CIRCLE,
@@ -21,7 +21,12 @@ const LocationPin = ({ lat, lng, location, locationAndTime }: any) => {
         position={{ lat, lng }}
       />
       {clicked && (
-        <InfoWindow position={{ lat, lng }}>
+        <InfoWindow
+          onCloseClick={() => {
+            setClicked(false);
+          }}
+          position={{ lat, lng }}
+        >
           <p className={styles["info-text"]}>{getLocationTime(location)}</p>
         </InfoWindow>
       )}

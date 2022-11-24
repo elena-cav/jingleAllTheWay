@@ -1,5 +1,5 @@
 const file =
-  "Egvekinot (21:00 GMT)\r\nAuckland (22:00 GMT)\r\nJakarta (22:45 GMT)\r\nAstana (23:30 GMT)\r\nPretoria (00:45 GMT)\r\nParis (01:30 GMT)\r\nReykjavík (02:30 GMT)\r\n Fermont (03:00 GMT)\r\n New York City (03:45 GMT)\r\nLos Angeles (04:45 GMT)\r\nMexico City (05:30 GMT)\r\nBogotá (06:15 GMT)\r\nBelo Horizonte (06:45 GMT)\r\nUshuaia (07:30 GMT)";
+  "Egvekinot (21:00 GMT)\r\nAuckland (22:00 GMT)\r\nJakarta (22:45 GMT)\r\nAstana (23:30 GMT)\r\nPretoria (00:45 GMT)\r\nParis (01:30 GMT)\r\nReykjavík (02:30 GMT)\r\nFermont (03:00 GMT)\r\nNew York City (03:45 GMT)\r\nLos Angeles (04:45 GMT)\r\nMexico City (05:30 GMT)\r\nBogotá (06:15 GMT)\r\nBelo Horizonte (06:45 GMT)\r\nUshuaia (07:30 GMT)";
 const split: string[] = file.split("\r\n") || [];
 
 const toDate = (dStr: any): Date => {
@@ -12,13 +12,14 @@ const toDate = (dStr: any): Date => {
 const getDestinationTime = (destination: string): string =>
   destination.split("(").pop()?.split(" GMT")[0]!;
 
-const getDestination = (destination: string): string =>
-  destination.split(" (").shift()?.split(")")[0]!;
-
+const getDestination = (destination: string): string => {
+  console.log("DESTINATION", destination);
+  return destination.split(" (").shift()?.split(")")[0]!;
+};
 const getLocationTime = (location: string) => {
-  console.log("LOCATION", location);
+  console.log("location", location);
+  console.log("SPLIT", split);
   const whichDestination = split.filter((itineraryDestination) => {
-    console.log("ITINERARY", itineraryDestination);
     const destination: string = getDestination(itineraryDestination);
     return location === destination;
   })[0];
@@ -26,21 +27,28 @@ const getLocationTime = (location: string) => {
     whichDestination
   )} GMT`;
 };
+type NextDestination = {
+  destination: string;
+  diff: number;
+};
+const nextDestination = {} as NextDestination;
 const jingle = (time: Date) => {
-  const difference = split.map((destination: string) => {
-    const destinationTime: string = getDestinationTime(destination);
+  for (let i = 0; i < split.length; i++) {
+    const dest = split[i];
+    const destinationTime: string = getDestinationTime(dest);
     const timeToDate: Date = toDate(destinationTime);
     const getTime = (time: Date) => new Date(time).getTime();
-    const diff = Math.abs(getTime(timeToDate) - getTime(time));
-    return {
-      destination: destination.slice(0, destination.indexOf(" (")),
-      diff,
-    };
-  });
-  const { destination, diff } = difference.reduce((prev, curr) =>
-    prev.diff < curr.diff ? prev : curr
-  );
-  return `Arriving in ${destination} in ${diff / 60000} minutes`;
+    const diff: number = getTime(timeToDate) - getTime(time);
+    const destination: string = dest.slice(0, dest.indexOf(" ("));
+    if (diff > 0) {
+      nextDestination.diff = diff;
+      nextDestination.destination = destination;
+      break;
+    }
+  }
+  return `Arriving in ${nextDestination.destination} in ${
+    nextDestination.diff / 60000
+  } minutes`;
 };
 
-export { jingle, getLocationTime };
+export { jingle, getLocationTime, toDate };

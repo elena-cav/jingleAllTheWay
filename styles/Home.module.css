@@ -11,3 +11,13 @@
   justify-content: center;
   align-items: center;
 }
+.title {
+  font-size: 3rem;
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(222, 77, 170, 1) 0%,
+    rgba(246, 211, 39, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

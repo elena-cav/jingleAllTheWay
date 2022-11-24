@@ -1,3 +1,7 @@
 .info-text {
   color: black;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
