@@ -5,7 +5,7 @@ import locations from "../utils/locations.json";
 import TimeInput from "./TimeInput";
 import styles from "../styles/Map.module.css";
 const containerStyle = {
-  width: "600px",
+  width: "800px",
   height: "600px",
 };
 

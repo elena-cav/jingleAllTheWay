@@ -13,12 +13,9 @@ const getDestinationTime = (destination: string): string =>
   destination.split("(").pop()?.split(" GMT")[0]!;
 
 const getDestination = (destination: string): string => {
-  console.log("DESTINATION", destination);
   return destination.split(" (").shift()?.split(")")[0]!;
 };
 const getLocationTime = (location: string) => {
-  console.log("location", location);
-  console.log("SPLIT", split);
   const whichDestination = split.filter((itineraryDestination) => {
     const destination: string = getDestination(itineraryDestination);
     return location === destination;
