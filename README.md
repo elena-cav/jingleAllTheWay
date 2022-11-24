@@ -13,3 +13,11 @@ Given an input time of Sun Dec 25 2022 02:20:00 GMT+0000, a simple algorithm mig
 Arriving in Reykjavík in 10 minutes
 Submission:
 When you have a solution, submit a link to your source code repo using the /submit command here on Slack. Please include any code and data required in order to test your solution easily. Submission closes noon 29th November
+
+### To run
+
+- npm i
+- npm run dev
+- cd utils
+- npm i
+- npm test
