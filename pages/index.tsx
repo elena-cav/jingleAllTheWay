@@ -11,7 +11,6 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>Jingle All The Way</h1>
-
         <Map />
       </main>
     </div>
