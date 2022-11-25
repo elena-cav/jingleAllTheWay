@@ -21,3 +21,5 @@ When you have a solution, submit a link to your source code repo using the /subm
 - cd utils
 - npm i
 - npm test
+
+The app is deployed at https://jingle-all-the-way.vercel.app/
