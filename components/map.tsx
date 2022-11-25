@@ -25,7 +25,7 @@ const Map = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyBkh_-9ikyxzcLs6n-4BmKm6LcIeEFtA1A",
+    googleMapsApiKey: process.env.GOOGLE_API_KEY || "",
   });
   const [map, setMap] = useState(null);
   const onLoad = useCallback(function callback(map: any) {
