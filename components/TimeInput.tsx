@@ -24,15 +24,21 @@ export default function TimeInput({
   const onChange = ({ target }: any) => {
     const time = target.value;
     const date = toDate(time);
+    console.log("DATE", date);
     const result = jingle(date);
     setNextDestination(result);
-
+    console.log("RESULT", result);
     const location = result.substring(
       result.indexOf("in ") + 3,
       result.lastIndexOf(" in")
     );
-    const coords: Coords = locations[location];
-    setNext({ lat: coords.lat, lng: coords.lng, location });
+    console.log(locations, location);
+    if (locations && location) {
+      const coords: Coords = locations[location];
+
+      console.log("COORDS", coords);
+      setNext({ lat: coords.lat, lng: coords.lng, location });
+    }
   };
   return (
     <div className={styles.wrapper}>

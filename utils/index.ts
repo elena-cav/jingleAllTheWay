@@ -3,7 +3,9 @@ const file =
 const split: string[] = file.split("\r\n") || [];
 
 const toDate = (dStr: any): Date => {
-  const date = Number(dStr.substr(0, 2)) > 12 ? "24" : "25";
+  const parsed = Date.parse(`2022-12-25T${dStr}:00`);
+  const lastStopMilliSeconds = 1671953400000;
+  const date = parsed > lastStopMilliSeconds ? "24" : "25";
   const now = new Date(`December ${date}, 2022`);
   now.setHours(dStr.slice(0, dStr.indexOf(":")));
   now.setMinutes(dStr.slice(dStr.indexOf(":") + 1));
